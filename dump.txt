@@ -1,0 +1,36 @@
+TEra Two: This story centers around a new and improved Agent who is dropped into the same world created in TEra One.
+1. Spawns with an entire set of tools, including guns and other implements of destruction.
+2. The Agent now has 1000 hit points, but loses 2 hit points per day.
+3. During the day, the agent moves at a speed of 1 block/second (with difficulty 0).
+4. The agent can see 2 blocks ahead and 2 blocks to the right or left (difficulty 0).
+5. The Agent has 1000 hit points, but loses 2 hit points per day
+
+
+
+
+In the Beta-version of this game, we will be focusing on the basics of how to program an agent that has these innate opinions in a simple world. Starting with the basic "class agent," and then moving onto advanced agents that can operate in more complex scenarios. One example of this is a class that can move through both a grid world AND also do turning and following behaviors through a maze at the same time. This will be a good test of our agent's ability to carry more than one objective at any given time.
+
+
+TEra Three: This story will focus on the conflict in the war between two sides of the same Agent, with each side having a different personality: One side of the Agent is called "Ausar," which means "Hero." The other side is called "Tamon," which means "Demon." The Ausar side of the agent is controlled by type 1 (Eager) and type 2 (cautious). The Tamon side of the agent is controlled by type 3 (resourceful) and type 4 (inventive).
+1. Spawns with 100 hit points
+2. The Agent now has 500 hit points.
+3. The Agent's health is increased by 100 every night.
+4. The agent has 1000 hit points, but loses 2 hit points per day
+
+
+TEra Four: This story will focus on what happens when the last hero dies, making way for a Demon to take over, who is controlled by the Cautious class that preys on his own people and makes them the victims of darkness.
+
+
+TEra Five: This story will be focused around an all new group of agents who have been mischieiously infected by a virus that slowly drives them mad from within at night (similar to the zombie plague).
+1. Spawns with the same attributes as class 1 and 2.
+2. Each agent, starting with the first, must be re-configured to have a unique name (known as a "name tag") and then they are put away in a small room in order to infect them with the virus that drives them to do evil during night turns (they will be known as "Night Hunters"). The Tamon side of these agents are controlled by type 4 (resourceful) and type 3 (inventive). The Ausar side of these agents are controlled by type 2 (cautious) and type 3 (inventive).
+4. Night Hunters cannot create/craft during night turns, and cannot eat. Instead, they can use the other type 4 characteristics of superhuman strength and speed, as well as incredible cunning to hunt their prey during the day.
+5. Each Night Hunter will have a "hunting cache" full of all those things that its previous agent would pick up during its time (such as food, armor, weapons, etc.). The Night Hunter will also have a simple set of commands to communicate with its fellow night hunters in order to coordinate hunts or distract their prey at night.
+
+
+TEra Six: This story is about how the world is invaded by a new group of agents that are created by an unknown entity called 'The Creator.
+1. Spawns with the same attributes as class 1 and 2.
+2. A new type of special agent, called 'Abandoned (AD), has been created and is placed with each agent that spawns.
+3. The AD is a simple minded thinking unit that obeys the commands of its creators (it has no intelligence of its own). It will only be able to follow the commands it receives during night turns from its creators.
+4. The AD has no class name except "Abandoned." It has no special characteristics of its own and will simply follow the command given to it by its creators during night turns.
+5. During the day, the AD can only speak in short one word statements (such as "yes","no," or "go"), and it cannot create/craft during day turns, instead taking all its orders from the agents that spawned with it.

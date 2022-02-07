@@ -1,0 +1,248 @@
+Abstract and Background:
+This article details the rules and bounds (methods and attributes) of a character named The Agent who just woke up in a small clearing surrounded by wilderness, forests, a lake, farm land, and mountains. The Agent learns about his environment through the use of a reinforcement learning algorithm that programs his reactions to stimuli. The observation space is the environment and the entity lives in a video game where he has to explore the world, and through trial and error, learn how to survive. The Agent has to learn from mistakes and avoid dangers. He can learn waypoints and begins every day at his cave which he is changing into a house with wood from the trees. He learns to build tools and progresses in technology using raw resources in the environment. He will learn to grow plants and keep animals. He can even build a boat with the resources he has. The point is to learn as much as possible through reinforcements, so that The Agent stays alive in this paradise environment.
+
+Methods:
+Creation of the Observation Space
+The observation space is a forest environment with living trees, a lake and mountains at the background. The built objects or features of the environment are:
+- The cave (a small shelter in the woods)
+- A house (a simple structure made of wood)
+- A boat and a motorboat motor.
+The reinforcement learning algorithm is designed to allow The Agent to reward himself by using good actions in this natural world; by finding new ways to modify his environment and find new resources, objects, and materials.
+- The reward is a value of 1 if The Agent saves the game. If he dies, the reward is 1/2.
+- The penalty is an action that diminishes his life, like "falling in the water" or "being burned by lava" which are represented in this game as "drowning" and "burned".
+- An action will cause a penalty to The Agent if it leads to his death by drowning or being burned by lava.
+- A negative punishment is an action that decreases the life of the agent and is needed when rewarding The Agent for saving his game.
+- Training takes place by exploration and experimentation. Random walks are assumed.
+- Learning takes place when The Agent has enough information about the environment and he can safely walk from one spot to another.
+Definition of the Agent's Methods:
+The agent consists of a reinforcement learning algorithm which defines the rules and bounds (the methods) of his feedback to his actions. The purpose of the agent is to reinforce good actions and learn from bad ones with positive or negative reinforcements. It is written in the programming language python and its code is available in this document.
+The following are the elements used to define the agent's method:
+- The environment is composed of two functions: "getter" and "setter".
+- A setter is a method that modifies the environment by adding an object or a feature to it.
+The project source code is available for download in the attached document.
+
+Results:
+The agent will be able to learn from bad actions and move to safer locations and travel new ways that can lead him to places he has never been before. He will modify his environment by building tools and structures as he finds new objects and materials like wood, stone, animals, plants, etc...
+The agent will be able to add features to his environment and increase his time in this paradise, as he learns new ways to think as a character and solve problems.
+This agent can also learn from good actions and feed the environment with new objects and functions, especially by modifying his waypoints which are measured in distance.
+He can learn from mistakes by learning from bad consequences and by avoiding bad consequences in order to stay alive. He can also learn from positive reinforcement and the positive reward of saving his game.
+We can add this type of world to a strategy game that requires an intelligent agent to play in an unknown environment and achieve specific objectives, like in Starcraft or Dune.
+- Define the observation space
+- Define the actions and their rules
+- Define the observation methods
+- Design the reward function (value) and its bounds (max, min, value). This value is used to reward or punish The Agent's actions.
+- Design the penalty function and its bounds. This value is used to punish The Agent's actions.
+- Design the bounds of the penalties, if it is greater or lesser than the bounds of the reward, then there is no need for a negative reinforcement.
+- Define new features to be added to the world like new objects and materials.
+- If The Agent does not need these features, then they will not be added to his environment.
+- Design a list of available actions with some default methods
+- Run a random walk until The Agent encounters an obstacle in his environment.
+Programing Languages: Python 3 was used to implement this project, while using numpy and scipy modules for calculations and execution.
+
+The Agent Class
+The agent class is a class instance that will be used to have the individual methods of each method.
+The class is defined in this document with the following methods:
+- getter_funcs which defines functions that can be used to get objects or features in an environment.
+- setter_funcs which defines functions to modify objects or features in the environment.
+- reward_function and its bounds, this is the value that will reward or punish actions taken by the Agent.  This value can be a number, a string, a variable (integer) or even another function. It will be divided into 3 parts: max(reward), min(reward), and value (reward).
+- penalty_function, this is the value that will be used to punish actions taken by The Agent.  This value can be a number, a string, a variable (integer) or even another function. It will be divided into 2 parts: max(penalty), min(penalty).
+- action_funcs which is used to define methods that are called and return an action. This method needs to have bounds for different parameters such as distance for waypoints or rotation for strategy games.  It may accept objects or features in the environment as parameters and return an action such as "walk left", "walk right", "walk forward", "build a house", etc.
+- set_action_funcs which is used to define methods that are called and modify objects or features in the environment. This method needs to have bounds for different parameters such as distance for waypoints or rotation for strategy games. It may accept objects or features in the environment as parameters and modify them such as "set house 2", "set house 1", "build a house", etc.
+- at_goal, this function return True if The Agent reaches the coordinates of his destination.
+
+The Code for agent actions is below
+#eyes
+    def getEyes(self):
+        return self.eyes
+    def setEyes(self, newEyes):
+        self.eyes = newEyes
+
+    #secondary conditions
+    #strength
+    def getStrength(self):
+        return self.Strength
+    def setStrength(self, newStrength):
+        self.strength = newStrength
+    #mood
+    def getMood(self):
+        return self.mood
+    def setMood(self, newMood):
+        self.mood = newMood
+    #speed of movement
+    def getStrength(self):
+        return self.Strength
+    def setStrength(self, newStrength):
+        self.strength = newStrength
+
+    #mood
+    #x,y location
+    #getting x,y coordinate
+    def getXlocationAgent(self):
+        return self.xlocation# init
+
+    def getYlocationAgent(self):
+        return self.ylocation
+
+    def getInterest(self):
+        return self.Interest
+    def setInterest(self, newInterest):
+        self.interest = newInterest
+
+    #setting x,y coordinate
+    def setXlocationAgent(self,newXloc):
+        self.xlocation = newXloc # init
+    def setYlocationAgent(self,newYloc):
+        self.ylocation = newYloc
+
+    #distance from its home shelter in the space
+    def getDistanceFromHome(self):
+        return self.DistanceFromHome
+    def setDistanceFromHome(self, newDistanceFromHome):
+        self.DistanceFromHome = newDistanceFromHome
+
+    #name
+    def getName(self):
+        return self.agent_name
+    def setName(self,newName):
+        self.agent_name = newName
+
+    #Methods:
+    '''
+    talk - asking agent to talk or say something.
+    move
+    decide # a binary choice about moving
+    eat
+    later on add drink
+    sleep
+        turning on
+        turning off
+    later on add attack
+    later on add defend
+
+    '''
+
+    def talk(self):
+
+
+        #print(self.mouth) this is an error
+        print(self.getMouth())
+
+    def move(self):
+        """
+            summary: move the agent through the observation space with actions
+            variables:
+                x ([type]): [description]
+                y ([type]): [description]
+                currentX ([type]): [description]
+                currentY ([type]): [description]
+            Returns:
+                (x,y): an x,y coordinate tuple denoting location of the agent within the space.
+        """
+        # x origin is [2,2]
+        x = int(input("Steps in X direction: "))
+        y = int(input("Steps in Y direction: "))
+        currentX = int(self.getXlocationAgent())
+        currentY = int(self.getYlocationAgent())
+        print(currentX,",",x)
+        self.setXlocationAgent(currentX+x)
+        self.setYlocationAgent(currentY+y)
+
+        return x,y
+
+    #speed of movement
+    def getSpeed(self):
+        return self.Speed
+    def setSpeed(self, newSpeed):
+        self.speed = newSpeed
+
+#Strategy:
+    def decide(self):
+    return self.decide()
+
+The waypoint functions and method names are pretty much self explanatory. The reward function is used to reward decisions made by the agent, essentially giving it a bonus for doing what it was programmed to do. The penalty function is used to give a penalty if the action it took was not what the agent was told to do. The waypoint functions are fairly simple, and only need bounds on different locations in the environment in order for them to be recognized as either a goal or an obstacle. These different parameter types are not going to be implemented because they have no useful purpose.
+
+The set_action_funcs method is probably the most useful part because it allows us to modify the environment in any way we see fit. For now, we are going to leave this function mostly empty except for the setName function that will allow The Agent to tell people his name.
+
+Getting The Agent to Talk:
+Now that we have a basic agent class, it's time for him to "speak" and let people know who he is. Experience tells me that a good place to start is with his mouth. Agents are not very good at talking so we need a pretty simple algorithm for this part of the class. Let's just do it that way.
+
+def getMouth():
+The code for this function is pretty much self explanatory:
+'''Get the agent's mouth and print it.'''
+
+   def talk(self):
+The code for this function is pretty much self explanatory:
+'''Say something and print it.'''
+
+   def move(self):
+The code for this function is also pretty much self explanatory:
+
+   The code needed to make all of these functions work is contained in a Agent class that implements The Agent's observations and rules, the waypoint functions, the strategy function, etc. We will run through some of these methods in order to understand how they are implemented.
+
+The Agent class is pretty straightforward, as you can see from the code below, with the exception of two methods (remember, we don't implement type inheritance yet):
+
+   def agent_name():
+This method has a much simpler problem in that it can return any text string. We will come back to it later for creating The Agent's name when we want to differentiate between different The Agents.
+
+def setName(self,newName):
+This method is called to update the agent name. Any legal string of characters will do.
+
+def waypoint(self, xl,xr,yl,yr):
+This method is where we tell Agent to implement the waypoint strategy function to get him from one point in space to another. The parameters are the coordinates of that location and a next location in space. We will come back to this method later when we actually need it for our program. For now, we are going to work on The Agent's mouth and getting him talking. We have accomplished this by using a public variable (mouth) and a talk function that prints out what his mouth variable contains. We are going to define it as a simple list at the top of the file for the moment and then make it more complicated after we get some basic stuff working.
+
+The main thing that still remains to be done, however, is to get The Agent moving from one place to another, and talking. Let's do that now. Here is what we need:
+As shown in Figure 5-2, we have already implemented move_to_x and move_to_y as waypoint functions so that The Agent will move from one location (waypoint) to another. His mouth is also implemented as a simple list at this point so that he can tell people his name. So we have accomplished much functionality but not all of it yet.
+
+
+The way that we are going to accomplish this functionality is by creating a new method called get_ready which will check to see if any of his sensors are available and make sure that the first sensor is ready (i.e., not blocked by obstacles) and move The Agent forward when it reports that it is fine. To do this, we need to check whether a sensor has become available. We can accomplish this by calling has_sensor_ready on Agent and passing in the appropriate sensor as an argument. How do we get from one location to another? Obviously, we need a way point function for each location in order for Agent to move from one point of space to another. But we also need a way to make sure that the step count is correct and that the sensor is fine. So we need to make sure that Agent's Speed has not been set too low so that he does not move too fast when he needs more steps for his next move. We can accomplish this by using a new method in our Agent class called check_speed. When we do this, however, our agent will just be moving from one location to another without any speech! To make it work as intended, we need to use a strategy function called get_new_x and get_new_y which will allow The Agent to use the sensors properly so he can actually talk to you instead of moving in place.
+
+def get_sensors():
+This method is fairly complicated because it has to check various things like the agent's name, if the agent is ready, and if the sensors are available before it can return an actual sensor. The details of which are shown below:
+
+def getName(self):
+We want The Agent to tell people his name when he finds himself not moving for some period of time. In order to make this happen, we will have The Agent execute this strategy function automatically when he finds himself in a new place.
+
+  def get_ready(self):
+This new method will return a True or False value depending if The Agent is ready or not to move on based on his available sensors.
+
+Agent Movement Methods
+Now that we have got the information we need to get The Agent moving I'll take you through the methods that we wrote to accomplish this functionality. The code for each method is shown below within square brackets [] and then define the method name before calling it.
+
+def set_speed(self,sz):
+This function sets the speed of The Agent at a given step count between 0 (no movement) and 1 (straight ahead). It is defined as a new waypoint function so that when The Agent needs to change his speed he doesn't just move forward at 1 but instead he moves in a waypoint fashion. We can also use it as a way to make him stop when necessary.
+
+
+def check_speed(self):
+This method is called every time we move The Agent. It compares The Agent's Speed to the threshold he has been set. If a problem is found, it tells us and that input stops us from moving forward. We could also use this method to make The Agent move slower when he is not ready to take steps (for the purpose of getting him talking)
+
+
+def get_new_x(self):
+This function returns the new location for The Agent if he needs more steps for his next move or tries to go straight ahead if his speed limit is 0 or 1. This function calculates the new location for The Agent based on the formula given above.
+
+
+def get_new_y(self):
+This function returns the new location for The Agent if he needs more steps for his next move or tries to go straight ahead if his speed limit is 0 or 1. This function calculates the new location for The Agent based on the formula given above.
+
+
+Agent Speech Functionality Methods
+The methods that we will use to make The Agent actually talk will all be called by some other method which we have yet to create. These methods will be used by the get_new_x and get_new_y functions that we just wrote to call the correct waypoint strategy functions in order to move The Agent forward.
+
+def say(self,s):
+This function is called when The Agent wants to say something. It uses find_sensor to take a look at all the sensors and make sure one is ready before calling it. If a sensor is not ready, it prints out that message instead of calling the strategy function for the waypoint he wants to use. This ensures that The Agent can actually talk instead of move about as he needs more steps before his next movement or needs more space for all his sensors before he can move on.
+
+def get_new_x(self,s):
+This function is used by the say function to execute itself whenever The Agent is ready to move another step. It uses say as an argument and passes in the new location of the agent. If a sensor is available it will check if The Agent needs more steps and give him those if so. Otherwise it will simply print out that this step can go forward for now.
+
+How will our Agent 'learn' from its mistakes and make decisions?
+In order to make the agent make decisions, it will have to use a learning function which tells us what has happened in the past. This function will look at the options that have been given to The Agent in the past and determine what could have happened if he had chosen one of those options. If the agent was able to choose an option but did not and simply chose another option - or if he was able to choose an option but chose a different waypoint than expected - then we need some sort of feedback mechanism so that we can give The Agent data so as not to contradict what his brain is expecting him to do. We will accomplish this by using a new method in our Agent class called remember. This method will keep track of all the data that The Agent is given, use a learning algorithm to determine what The Agent should have done, and then remember what would have happened if he had chosen one of the available options. As you can see below:
+
+def remember(self,s):
+This method is not as simple as all that but shows the basic method we will be using to store data and take action based on it. The idea behind this mechanism is that we want The Agent to choose the correct waypoint initially, but if he doesn't, then he will remember what his brain should have done instead. When it comes time for him to choose a next waypoint, we will let The Agent know what would have happened if he had chosen one of the previous wayspottes so that The Agent can choose accordingly.
+The Agent uses the remember method with a different set of arguments and returns a Boolean value. The arguments are:
+
+s - an array containing the last few sensor readings
+h - an array containing the most recent history of all the waypoints chosen and their outcomes. This will help The Agent understand that if he chooses a certain waypoint, then he may end up in different locations than he would have expected at first.
+h_t - the history for the tth step. The Agent will compare his input from this step to his memory of his previous steps and make decisions based on how those correlate to what happened before and what should have happened in order to avoid contradiction.
+h_t-1 - the history for the tth step. The Agent will compare his input from this step to his memory of his previous steps and make decisions based on how those correlate to what happened before and what should have happened in order to avoid contradiction.
+
+We want some randomness also so the agent can choose to make a less than optimal decision out of preference.
