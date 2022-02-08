@@ -33,20 +33,20 @@ means that user can specify what the gnome says by providing "mouth" as string. 
 import matplotlib.pyplot as plt
 
 class Gnome:
-    #Atributes: arms, legs, location, health, mood, head, mouth, eyes
-    arm = 0
-    leg = 2
-    mouth = "Hey... I'm Greg..."
-    health = 100
-    mood = 0
-    Interest = 0 # starts with no interest at all in features within his/her action space
-    eyes = 2 # has two eyes that are able to sense dangers and other things
-    head = 1
-    strength = 50 # ranges from 1 to 100 and will change based on interactions with environment.
-    gnome_name = "Greg"
-    xlocation = 2 # call gamearea len(gamearea)//2 gives the central point if it is an odd number of cols or rows
-    ylocation = 2
-    DistanceFromHome = 0
+  #Atributes: arms, legs, location, health, mood, head, mouth, eyes
+  arm = 0
+  leg = 2
+  mouth = "Hey... I'm Greg..."
+  health = 100
+  mood = 0
+  Interest = 0 # starts with no interest at all in features within his/her action space
+  eyes = 2 # has two eyes that are able to sense dangers and other things
+  head = 1
+  strength = 50 # ranges from 1 to 100 and will change based on interactions with environment.
+  gnome_name = "Greg"
+  xlocation = 2 # call gamearea len(gamearea)//2 gives the central point if it is an odd number of cols or rows
+  ylocation = 2
+  DistanceFromHome = 0
 
     #Constructor
     def __init__(self,gnome_name, mouth):
@@ -196,10 +196,11 @@ class Gnome:
     def move(self,Game_Area):
 
       # x origin is [2,2]
-      #x = int(input("Steps in X direction: "))
-      #y = int(input("Steps in Y direction: "))
+      currentX = 0 # initialise
+      currentY = 0 # initialise
+
       print("Where do you want to move? ") # this is a waypoint
-      moveTo = 'w' # init default
+      moveTo = 'w'# init default
       while moveTo in ['w','a','s','d']:
         moveTo = input(":")
         try:
