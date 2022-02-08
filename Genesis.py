@@ -34,6 +34,8 @@ from basic_garden import *
 from basic_gnome import *
 
 if __name__ == '__main__':
+
+
   Robert_the_Gnome = Gnome("Robert", "Hi I am a happy gnome!") # include # of parameters in the objects construction
   Game_Area = ObservationSpace("Garden")
   print(Robert_the_Gnome.getName()) #not good

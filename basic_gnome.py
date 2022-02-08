@@ -1,24 +1,30 @@
 
-class Gnome:
-    #Atributes: arms, legs, location, health, mood, head, mouth, eyes
-    arm = 0
-    leg = 2
-    mouth = "Hey... I'm Greg..."
+class Agent:
+    voice = "Hey... I'm Greg..."
     health = 100
-    mood = 0
-    Interest = 0 # starts with no interest at all in features within his/her action space
-    eyes = 2 # has two eyes that are able to sense dangers and other things
-    head = 1
+    mood = 0 # the agent
+    interest = 0 # starts with no interest at all in features within his/her action space.
     strength = 50 # ranges from 1 to 100 and will change based on interactions with environment.
-    gnome_name = "Greg"
-    xlocation = 2 # call gamearea len(gamearea)//2 gives the central point if it is an odd number of cols or rows
-    ylocation = 2
-    DistanceFromHome = 0
+    agent_name = "Greg" # the name of the agent
+    xlocation = 2 # ranges
+    # call gamearea len(gamearea)//2 gives the central point if it is an odd number of cols or rows
+    ylocation = 2 # ranges
+    DistanceFromHome = 0 # the distance between agent and start location
 
-    #Constructor
-    def __init__(self,gnome_name, mouth):
-        self.gnome_name = gnome_name
-        self.mouth = mouth
+    # ---------------------------------------------------------------------------- #
+    #                              constructor method                              #
+    # ---------------------------------------------------------------------------- #
+
+    def __init__(self,agent_name, voice):
+        """
+        summary: initializes the class with the given agent name and voice
+
+        Args:
+            agent_name ([type]): [description]
+            voice ([type]): [description]
+        """
+        self.agent_name = agent_name
+        self.voice = voice
 
 
     '''
@@ -32,76 +38,67 @@ class Gnome:
 
 
     '''
-    # Gets and Sets
+    # ---------------------------------------------------------------------------- #
+    #                                 Gets and Sets                                #
+    # ---------------------------------------------------------------------------- #
 
-    #arm
-    def getArm(self):
-        return self.arm
-    def setArm(self, newArm):
-        self.arm = newArm
+    # ---------------------------------------------------------------------------- #
+    #                               voice for speaking                             #
+    # ---------------------------------------------------------------------------- #
+    def getVoice(self):
+        return self.voice
+    def setVoice(self, newVoice):
+        self.voice = newVoice
 
-    #leg
-    def getLeg(self):
-        return self.leg
-    def setLeg(self,newLeg):
-        self.leg = newLeg
-
-    #head
-    def getHead(self):
-        return self.head
-    def setHead(self,newHead):
-        self.head = newHead
-
-    #mouth for talking
-    def getMouth(self):
-        return self.mouth
-    def setMouth(self, newMouth):
-        self.mouth = newMouth
-
-    #eyes
-    def getEyes(self):
-        return self.eyes
-    def setEyes(self, newEyes):
-        self.eyes = newEyes
-
-    #secondary conditions
-    #strength
+    # ---------------------------------------------------------------------------- #
+    #                                   strength                                   #
+    # ---------------------------------------------------------------------------- #
     def getStrength(self):
         return self.Strength
     def setStrength(self, newStrength):
         self.strength = newStrength
-    #mood
+    # ---------------------------------------------------------------------------- #
+    #                                     mood                                     #
+    # ---------------------------------------------------------------------------- #
     def getMood(self):
         return self.mood
     def setMood(self, newMood):
         self.mood = newMood
-    #speed of movement
-    def getStrength(self):
-        return self.Strength
-    def setStrength(self, newStrength):
-        self.strength = newStrength
+    # ---------------------------------------------------------------------------- #
+    #                               Movement Speed                                 #
+    # ---------------------------------------------------------------------------- #
+    def getSpeed(self):
+        return self.Speed
+    def setSpeed(self, newSpeed):
+        # Initialize
+        self.strength = newSpeed
 
     #mood
     #x,y location
     #getting x,y coordinate
-    def getXlocationGnome(self):
+    def getXlocationAgent(self):
         return self.xlocation# init
 
-    def getYlocationGnome(self):
+    def getYlocationAgent(self):
         return self.ylocation
 
+    # ---------------------------------------------------------------------------- #
+    #        Get the interest and set the interest of the agent at runtime         #
+    # ---------------------------------------------------------------------------- #
     def getInterest(self):
         return self.Interest
     def setInterest(self, newInterest):
         self.interest = newInterest
 
-    #setting x,y coordinate
-    def setXlocationGnome(self,newXloc):
+    # ---------------------------------------------------------------------------- #
+    #            setting x,y coordinate(s) and location commands                   #
+    # ---------------------------------------------------------------------------- #
+    def setXlocationAgent(self,newXloc):
         self.xlocation = newXloc # init
-    def setYlocationGnome(self,newYloc):
+    def setYlocationAgent(self,newYloc):
         self.ylocation = newYloc
 
-    #distance from its home shelter in the space
+    #* distance from its home shelter in the space
     def getDistanceFromHome(self):
         return self.DistanceFromHome
     def setDistanceFromHome(self, newDistanceFromHome):
@@ -109,13 +106,13 @@ class Gnome:
 
     #name
     def getName(self):
-        return self.gnome_name
+        return self.agent_name
     def setName(self,newName):
-        self.gnome_name = newName
+        self.agent_name = newName
 
     #Methods:
     '''
-    talk - asking gnome to talk or say something.
+    talk - asking agent to talk or say something.
     move
     decide # a binary choice about moving
     eat
@@ -129,28 +126,28 @@ class Gnome:
     '''
 
     def talk(self):
-        #print(self.mouth) this is an error
-        print(self.getMouth())
+        #print(self.voice) this is an error
+        print(self.getVoice())
 
     def move(self):
         """
-            summary: move the gnome through the observation space with actions
+            summary: move the agent through the observation space with actions
             variables:
                 x ([type]): [description]
                 y ([type]): [description]
                 currentX ([type]): [description]
                 currentY ([type]): [description]
             Returns:
-                (x,y): an x,y coordinate tuple denoting location of the gnome within the space.
+                (x,y): an x,y coordinate tuple denoting location of the agent within the space.
         """
         # x origin is [2,2]
         x = int(input("Steps in X direction: "))
         y = int(input("Steps in Y direction: "))
-        currentX = int(self.getXlocationGnome())
-        currentY = int(self.getYlocationGnome())
+        currentX = int(self.getXlocationAgent())
+        currentY = int(self.getYlocationAgent())
         print(currentX,",",x)
-        self.setXlocationGnome(currentX+x)
-        self.setYlocationGnome(currentY+y)
+        self.setXlocationAgent(currentX+x)
+        self.setYlocationAgent(currentY+y)
 
         return x,y
 
