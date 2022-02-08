@@ -25,6 +25,7 @@ Gnoman's Land
 The Gnomad
 Gnomadic Life
 There's no place like Gnome
+Leaving Gnome
 
 '''
 import basic_garden
