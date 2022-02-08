@@ -1,0 +1,38 @@
+[level]
+tileset = tileset.png
+map =..b.b.bb..
+     ##b..b#b..
+     bb.b..b..b
+     #b..b.h...
+     b.gb..b#b.
+     bbb#bb..#.
+     ..b....#b.
+     .........b
+     .b#.bb....
+     bb.bbb.#..
+
+[.]
+name = dirt
+tile = 0, 1
+
+[#]
+name = rocks
+wall = true
+block = true
+
+[b]
+name = grassland
+tile = 0, 0
+block = False
+wall = False
+
+[g]
+name = gnome
+tile = 0, 0
+block = true
+sprite = man_sprite.png
+
+[h]
+name = house
+tile = 0, 26
+block = true

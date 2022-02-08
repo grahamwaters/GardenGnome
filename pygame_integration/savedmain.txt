@@ -1,0 +1,84 @@
+
+if __name__ == "__main__":
+
+    pygame.init()
+    screen = pygame.display.set_mode((1040, 600))
+    screen.fill((255, 255, 255))
+    table = load_tile_table("pygame_integration/tileset.png", 30, 30)
+    for x, row in enumerate(table):
+        for y, tile in enumerate(row):
+            screen.blit(tile, (x*30, y*30))
+    pygame.display.flip()
+    while pygame.event.wait().type != pygame.locals.QUIT:
+        pass
+
+    '''
+    The function load_tile_table() will load tiles from a tileset file, and return them sliced up as a list of lists. At first I did that by creating separate surfaces, but later I found out that using subsurface is better – it doesn’t create copies in memory. Once the tiles are loaded, they are displayed, a little spaced so that you can see where they end:
+
+    '''
+
+    '''
+    now with level.map saved...
+    This way, for every map square I have a dictionary of key-value pairs describing that square. If I need to add something, I just add a new character to the legend, with the description. Now, the parsing of that goes something like this:
+    '''
+
+    screen = pygame.display.set_mode((424, 320))
+
+    MAP_TILE_WIDTH = 24
+    MAP_TILE_HEIGHT = 16
+
+    MAP_CACHE = TileCache(MAP_TILE_WIDTH, MAP_TILE_HEIGHT)
+
+    level = Level()
+    level.load_file('level.map')
+
+    clock = pygame.time.Clock()
+
+    background, overlay_dict = level.render()
+    overlays = pygame.sprite.RenderUpdates()
+    for (x, y), image in overlay_dict.iteritems():
+        overlay = pygame.sprite.Sprite(overlays)
+        overlay.image = image
+        overlay.rect = image.get_rect().move(x * 24, y * 16 - 16)
+    screen.blit(background, (0, 0))
+    overlays.draw(screen)
+    pygame.display.flip()
+
+
+    game_over = False
+    while not game_over:
+
+        # XXX draw all the objects here
+        #* sprites
+        pygame.sprite.clear(screen, background)
+        sprites.update()
+        dirty = sprites.draw(screen)
+        overlays.draw(screen)
+        pygame.display.update(dirty)
+        clock.tick(15)
+
+        #* overlays
+        overlays.draw(screen)
+        pygame.display.flip()
+        clock.tick(15)
+        for event in pygame.event.get():
+            if event.type == pygame.locals.QUIT:
+                game_over = True
+            elif event.type == pygame.locals.KEYDOWN:
+                pressed_key = event.key
+
+
+        '''
+        We are doing 15 iterations of the loop per second, using pygame’s clock. In each iteration we will draw our objects on the background, and then draw the overlays over them.
+
+        Later we will move the main loop into a separate “Game” object, and put some of the state we need to keep track of on it. For now it’s enough.
+
+
+        Note that instead using pygame.display.flip() we switched to pygame.display.update(), which takes a list of rectangles to update as a parameter. This way we are only updating the parts of the screen that contain sprites – the only thing that can move.
+
+
+
+        '''
+
+
+main()

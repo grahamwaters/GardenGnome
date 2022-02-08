@@ -26,20 +26,8 @@ class Agent:
         self.agent_name = agent_name
         self.voice = voice
 
-
-    '''
-    if we don't declare it then python will do this
-    def __init__(self):
-        n/a inside
-
-    void talk(){
-        # no returns
-    }
-
     # ---------------------------------------------------------------------------- #
     #                                 Gets and Sets                                #
-    # ---------------------------------------------------------------------------- #
-
     # ---------------------------------------------------------------------------- #
     #                               voice for speaking                             #
     # ---------------------------------------------------------------------------- #
@@ -69,31 +57,31 @@ class Agent:
         return self.Speed
     def setSpeed(self, newSpeed):
         # Initialize
-        self.strength = newSpeed
+        self.speed = newSpeed
 
     #mood
     #x,y location
     #getting x,y coordinate
     def getXlocationAgent(self):
-        return self.xlocation# init
+        return self.xlocation # init
 
     def getYlocationAgent(self):
-        return self.ylocation
+        return self.ylocation # init
 
     # ---------------------------------------------------------------------------- #
     #        Get the interest and set the interest of the agent at runtime         #
     # ---------------------------------------------------------------------------- #
     def getInterest(self):
-        return self.Interest
+        return self.interest # init
     def setInterest(self, newInterest):
         self.interest = newInterest
 
     # ---------------------------------------------------------------------------- #
     #            setting x,y coordinate(s) and location commands                   #
     # ---------------------------------------------------------------------------- #
-    def setXlocationAgent(self,newXloc):
-        self.xlocation = newXloc # init
-    def setYlocationAgent(self,newYloc):
+    def setXlocationAgent(self, newXloc):
+        self.xlocation = newXloc #init
+    def setYlocationAgent(self, newYloc):
         self.ylocation = newYloc
 
     #* distance from its home shelter in the space
@@ -105,7 +93,7 @@ class Agent:
     #name
     def getName(self):
         return self.agent_name
-    def setName(self,newName):
+    def setName(self, newName):
         self.agent_name = newName
 
     #Methods:
@@ -148,9 +136,3 @@ class Agent:
         self.setYlocationAgent(currentY+y)
 
         return x,y
-
-    #speed of movement
-    def getSpeed(self):
-        return self.Speed
-    def setSpeed(self, newSpeed):
-        self.speed = newSpeed
