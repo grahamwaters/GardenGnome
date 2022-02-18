@@ -246,3 +246,71 @@ h_t - the history for the tth step. The Agent will compare his input from this s
 h_t-1 - the history for the tth step. The Agent will compare his input from this step to his memory of his previous steps and make decisions based on how those correlate to what happened before and what should have happened in order to avoid contradiction.
 
 We want some randomness also so the agent can choose to make a less than optimal decision out of preference.
+
+
+
+Abstract:
+This article details the rules/actions and variables (methods and attributes) of a character named "The Agent" that spawns into the digital world in a small clearing surrounded by wilderness. The world space consists of tiles that can be one of several options: a forest, a lake, grass land, rocky dirt, and mountains. The Agent learns about his environment through Q-Learning, which is a kind of reinforcement learning. This determines his reactions to stimuli. The agent has one primary goal which is to survive and three secondary goals: Maximize health, minimize distance from points of danger, and occasionally take selfish "greedy" actions while exploring and learn from their outcomes. The Agent must learn from its mistakes how to avoid dangers. He can also identify and save way points in the observation space, collect resources from tiles, and carry them in a backpack with limited storage. He begins every day (represented by an epoch) at his cave. He would ideally be able to build tools and progress in technology using raw resources in the environment. He will learn to grow plants and hunt animals. The point is to learn as much as possible through reinforcements, so that The Agent stays alive in this semi-markovian environment.
+
+Methods:
+Creation of the Observation Space
+The observation space is the environment represented by a 100 x 100 square of semi-random tiles distributed into biomes.
+The initial objects, way points, or features of the environment are:
+- A cave for the agent to live in.
+- Three tiles that chain together one edge to create the representation of a lake full of fresh water.
+- One tile with a patch of clean dirt that is adjacent to the tile containing the cave. This tile is where the Agent will find food growing that it can eat.
+The reinforcement learning algorithm is designed to allow The Agent to reward himself with, or be rewarded by, good actions in this two dimensional world. These rewards will be manifested by the Agent as it finds new ways to modify his environment and save/identify new resources, objects, and materials.
+Each time the agent moves it will be assumed that the agent has taken one minute per move. In this way we can say that the agent spends "minutes" while referring to movements.
+
+Reward Values
+The provided list below of reward values will follow the pattern: [point value: action taken].
+There are four primary kinds of rewards corresponding to the four primary innate values that the agent cares about: health, interest, speed, and confidence.
+The agent is rewarded with 1 health point for every food item it gathers.
++1 health and +1 confidence -0.10 speed: gathered a food item.
++1 health and +1 confidence +1.5 Interest: waited for one minute in safety.
++1 health -1 speed +1 confidence: gathered one bucket of water.
++2  : built an item for which there is no corresponding raw material and saved it in its backpack to be used later on.
++2 : found something new on a tile.
++2 : identified a point of danger.
++3 : identified a waypoint to be used in future epochs.
++3: killed something and harvested its meat.
++4: Carried one bucket of water from the tile with the fresh water lake to the tile with the cave. This bucket will be used for cooking food later on.
+-4: Gathered two food items in one minute, when only one is necessary per minute (and should just wait).
+
+Punishment Values
+-0.5 : spent one minute exploring.
+For every minute that the agent explores it loses half a point of health. This incentives the agent to refresh itself back at its home base.
+-0.25 : spent 1 minute traveling within already "discovered" tiles.
+-0.5: spent 1 minute exposed to the wild side of the tile-map which includes lakes, mountains, forests and grassland, rocky dirt ,and wild animals.
+-1: consumed food when health is full (when Health = 100).
+-100: was killed by a wild animal.
+
+
+The point value of the punishment values is designed to be large enough that the agent will learn from its mistakes, yet small enough to retain interest.
+
+Agent Characteristics: innate characteristics of the agent which it is born with that will influence its decisions across epochs.
+1. Bravery/Interest - How brave is our agent? Will it be more likely to pursue goals even when it is hungry? This is likely determined by its Risk Value (epsilon) in the Q-learning equation where it considers the "quality of life" that it observes at every moment "t".
+2. Past Knowledge-base - What has the agent already learned?
+
+
+Agent Bravery
+This is a function of the current health, distance from danger, and the amount of resources it has collected (if any).
+
+The Game Flow
+The game flow is shown in Figure 1. The agent begins its search for food and water each day at dawn. It will take randomly chosen tiles to fill his backpack with a filled volume that is limited by space, not weight.
+
+
+
+
+- The reward is a value of 1 if The Agent saves the game. If he dies, the reward is 1/2.
+- The penalty is an action that diminishes his life, like "falling in the water" or "being burned by lava" which are represented in this game as "drowning" and "burned".
+- An action will cause a penalty to The Agent if it leads to his death by drowning or being burned by lava.
+- A negative punishment is an action that decreases the life of the agent and is needed when rewarding The Agent for saving his game.
+- Training takes place by exploration and experimentation. Random walks are assumed.
+- Learning takes place when The Agent has enough information about the environment and he can safely walk from one spot to another.
+Definition of the Agent's Methods:
+The agent consists of a reinforcement learning algorithm which defines the rules and bounds (the methods) of his feedback to his actions. The purpose of the agent is to reinforce good actions and learn from bad ones with positive or negative reinforcements. It is written in the programming language python and its code is available in this document.
+The following are the elements used to define the agent's method:
+- The environment is composed of two functions: "getter" and "setter".
+- A setter is a method that modifies the environment by adding an object or a feature to it.
+The project source code is available for download in the attached document.

@@ -40,14 +40,11 @@ y_position = []
 class Agent:
 
     #Atributes: arms, legs, location, health, mood, head, mouth, eyes
-    arm = 0
-    leg = 2
+
     mouth = "Hey... I'm Greg..."
     health = 100
     mood = 0
     Interest = 0 # starts with no interest at all in features within his/her action space
-    eyes = 2 # has two eyes that are able to sense dangers and other things
-    head = 1
     strength = 50 # ranges from 1 to 100 and will change based on interactions with environment.
     agent_name = "Greg"
     xlocation = 2 # call gamearea len(gamearea)//2 gives the central point if it is an odd number of cols or rows
@@ -169,7 +166,6 @@ class Agent:
     '''
 
     def talk(self):
-        #print(self.mouth) this is an error
         print(self.getMouth())
 
     def moveUp(self): #w a s d
